@@ -8,25 +8,25 @@
 
 import UIKit
 
-enum PresentationDirection {
+public enum SideDrawerPresentationDirection {
     case left
     case right
 }
 
-enum PresentationType {
+public enum SideDrawerPresentationType {
     case slideIn
     case reveal
 }
 
 public class SlideInPresentationManager: NSObject {
 
-    let direction: PresentationDirection
-    let type: PresentationType
+    let direction: SideDrawerPresentationDirection
+    let type: SideDrawerPresentationType
     let widthRatio: CGFloat
 
 //    var swipeInteractionController: SwipeInteractionController?
 
-    init(widthRatio: CGFloat, type: PresentationType, direction: PresentationDirection) {
+    init(widthRatio: CGFloat, type: SideDrawerPresentationType, direction: SideDrawerPresentationDirection) {
         self.widthRatio = widthRatio
         self.type = type
         self.direction = direction

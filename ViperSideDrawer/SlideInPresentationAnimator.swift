@@ -11,10 +11,10 @@ import UIKit
 final class SlideInPresentationAnimator: NSObject {
 
     // MARK: - Properties
-    let direction: PresentationDirection
+    let direction: SideDrawerPresentationDirection
     let isPresentation: Bool
 
-    init(direction: PresentationDirection, isPresentation: Bool) {
+    init(direction: SideDrawerPresentationDirection, isPresentation: Bool) {
         self.direction = direction
         self.isPresentation = isPresentation
         super.init()

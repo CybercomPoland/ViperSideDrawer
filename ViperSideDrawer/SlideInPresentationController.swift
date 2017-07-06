@@ -16,9 +16,9 @@ class SlideInPresentationController: UIPresentationController {
 
     weak var presentationDelegate: SlideInPresentationControllerDelegate?
 
-    private var direction: PresentationDirection
+    private var direction: SideDrawerPresentationDirection
 
-    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, direction: PresentationDirection) {
+    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, direction: SideDrawerPresentationDirection) {
         self.direction = direction
 
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
