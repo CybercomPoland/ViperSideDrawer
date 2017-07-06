@@ -1,0 +1,409 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		405260151F0E5B370053F5D9 /* ViperSideDrawer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4052600B1F0E5B370053F5D9 /* ViperSideDrawer.framework */; };
+		4052601A1F0E5B370053F5D9 /* ViperSideDrawerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 405260191F0E5B370053F5D9 /* ViperSideDrawerTests.m */; };
+		4052601C1F0E5B370053F5D9 /* ViperSideDrawer.h in Headers */ = {isa = PBXBuildFile; fileRef = 4052600E1F0E5B370053F5D9 /* ViperSideDrawer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		405260161F0E5B370053F5D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 405260021F0E5B370053F5D9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4052600A1F0E5B370053F5D9;
+			remoteInfo = ViperSideDrawer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4052600B1F0E5B370053F5D9 /* ViperSideDrawer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ViperSideDrawer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4052600E1F0E5B370053F5D9 /* ViperSideDrawer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViperSideDrawer.h; sourceTree = "<group>"; };
+		4052600F1F0E5B370053F5D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		405260141F0E5B370053F5D9 /* ViperSideDrawerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViperSideDrawerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		405260191F0E5B370053F5D9 /* ViperSideDrawerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViperSideDrawerTests.m; sourceTree = "<group>"; };
+		4052601B1F0E5B370053F5D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		405260071F0E5B370053F5D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		405260111F0E5B370053F5D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				405260151F0E5B370053F5D9 /* ViperSideDrawer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		405260011F0E5B370053F5D9 = {
+			isa = PBXGroup;
+			children = (
+				4052600D1F0E5B370053F5D9 /* ViperSideDrawer */,
+				405260181F0E5B370053F5D9 /* ViperSideDrawerTests */,
+				4052600C1F0E5B370053F5D9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4052600C1F0E5B370053F5D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4052600B1F0E5B370053F5D9 /* ViperSideDrawer.framework */,
+				405260141F0E5B370053F5D9 /* ViperSideDrawerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4052600D1F0E5B370053F5D9 /* ViperSideDrawer */ = {
+			isa = PBXGroup;
+			children = (
+				4052600E1F0E5B370053F5D9 /* ViperSideDrawer.h */,
+				4052600F1F0E5B370053F5D9 /* Info.plist */,
+			);
+			path = ViperSideDrawer;
+			sourceTree = "<group>";
+		};
+		405260181F0E5B370053F5D9 /* ViperSideDrawerTests */ = {
+			isa = PBXGroup;
+			children = (
+				405260191F0E5B370053F5D9 /* ViperSideDrawerTests.m */,
+				4052601B1F0E5B370053F5D9 /* Info.plist */,
+			);
+			path = ViperSideDrawerTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		405260081F0E5B370053F5D9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4052601C1F0E5B370053F5D9 /* ViperSideDrawer.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		4052600A1F0E5B370053F5D9 /* ViperSideDrawer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4052601F1F0E5B370053F5D9 /* Build configuration list for PBXNativeTarget "ViperSideDrawer" */;
+			buildPhases = (
+				405260061F0E5B370053F5D9 /* Sources */,
+				405260071F0E5B370053F5D9 /* Frameworks */,
+				405260081F0E5B370053F5D9 /* Headers */,
+				405260091F0E5B370053F5D9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ViperSideDrawer;
+			productName = ViperSideDrawer;
+			productReference = 4052600B1F0E5B370053F5D9 /* ViperSideDrawer.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		405260131F0E5B370053F5D9 /* ViperSideDrawerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 405260221F0E5B370053F5D9 /* Build configuration list for PBXNativeTarget "ViperSideDrawerTests" */;
+			buildPhases = (
+				405260101F0E5B370053F5D9 /* Sources */,
+				405260111F0E5B370053F5D9 /* Frameworks */,
+				405260121F0E5B370053F5D9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				405260171F0E5B370053F5D9 /* PBXTargetDependency */,
+			);
+			name = ViperSideDrawerTests;
+			productName = ViperSideDrawerTests;
+			productReference = 405260141F0E5B370053F5D9 /* ViperSideDrawerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		405260021F0E5B370053F5D9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Aleksander Maj";
+				TargetAttributes = {
+					4052600A1F0E5B370053F5D9 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = C6P2EMH7KR;
+						ProvisioningStyle = Automatic;
+					};
+					405260131F0E5B370053F5D9 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = C6P2EMH7KR;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 405260051F0E5B370053F5D9 /* Build configuration list for PBXProject "ViperSideDrawer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 405260011F0E5B370053F5D9;
+			productRefGroup = 4052600C1F0E5B370053F5D9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4052600A1F0E5B370053F5D9 /* ViperSideDrawer */,
+				405260131F0E5B370053F5D9 /* ViperSideDrawerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		405260091F0E5B370053F5D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		405260121F0E5B370053F5D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		405260061F0E5B370053F5D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		405260101F0E5B370053F5D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4052601A1F0E5B370053F5D9 /* ViperSideDrawerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		405260171F0E5B370053F5D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4052600A1F0E5B370053F5D9 /* ViperSideDrawer */;
+			targetProxy = 405260161F0E5B370053F5D9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		4052601D1F0E5B370053F5D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4052601E1F0E5B370053F5D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		405260201F0E5B370053F5D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = C6P2EMH7KR;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = ViperSideDrawer/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = pl.cybercom.ViperSideDrawer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		405260211F0E5B370053F5D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = C6P2EMH7KR;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = ViperSideDrawer/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = pl.cybercom.ViperSideDrawer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		405260231F0E5B370053F5D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = C6P2EMH7KR;
+				INFOPLIST_FILE = ViperSideDrawerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = pl.cybercom.ViperSideDrawerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		405260241F0E5B370053F5D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = C6P2EMH7KR;
+				INFOPLIST_FILE = ViperSideDrawerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = pl.cybercom.ViperSideDrawerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		405260051F0E5B370053F5D9 /* Build configuration list for PBXProject "ViperSideDrawer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4052601D1F0E5B370053F5D9 /* Debug */,
+				4052601E1F0E5B370053F5D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4052601F1F0E5B370053F5D9 /* Build configuration list for PBXNativeTarget "ViperSideDrawer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				405260201F0E5B370053F5D9 /* Debug */,
+				405260211F0E5B370053F5D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		405260221F0E5B370053F5D9 /* Build configuration list for PBXNativeTarget "ViperSideDrawerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				405260231F0E5B370053F5D9 /* Debug */,
+				405260241F0E5B370053F5D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 405260021F0E5B370053F5D9 /* Project object */;
+}
