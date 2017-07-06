@@ -26,7 +26,7 @@ public class SlideInPresentationManager: NSObject {
 
 //    var swipeInteractionController: SwipeInteractionController?
 
-    init(widthRatio: CGFloat, type: SideDrawerPresentationType, direction: SideDrawerPresentationDirection) {
+     public init(widthRatio: CGFloat, type: SideDrawerPresentationType, direction: SideDrawerPresentationDirection) {
         self.widthRatio = widthRatio
         self.type = type
         self.direction = direction
