@@ -18,7 +18,7 @@ enum PresentationType {
     case reveal
 }
 
-class SlideInPresentationManager: NSObject {
+public class SlideInPresentationManager: NSObject {
 
     let direction: PresentationDirection
     let type: PresentationType
@@ -37,7 +37,7 @@ class SlideInPresentationManager: NSObject {
 
 extension SlideInPresentationManager: UIViewControllerTransitioningDelegate, SlideInPresentationControllerDelegate, RevealPresentationControllerDelegate {
 
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+    public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         switch type {
         case .slideIn:
             let presentationController = SlideInPresentationController(presentedViewController: presented, presenting: presenting, direction: self.direction)
@@ -50,7 +50,7 @@ extension SlideInPresentationManager: UIViewControllerTransitioningDelegate, Sli
         }
     }
 
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         switch type {
         case .slideIn:
             return SlideInPresentationAnimator(direction: direction, isPresentation: true)
@@ -59,7 +59,7 @@ extension SlideInPresentationManager: UIViewControllerTransitioningDelegate, Sli
         }
     }
 
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         switch type {
         case .slideIn:
             return SlideInPresentationAnimator(direction: direction, isPresentation: false)
