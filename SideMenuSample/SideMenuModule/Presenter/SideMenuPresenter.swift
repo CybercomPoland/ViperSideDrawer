@@ -18,7 +18,7 @@ extension SideMenuPresenter: SideMenuViewOutput {
 
     }
 
-    func hideButtonTapped() {
-        self.router.dismissUserInterface()
+    func didTapButton(at index: UInt) {
+        
     }
 }

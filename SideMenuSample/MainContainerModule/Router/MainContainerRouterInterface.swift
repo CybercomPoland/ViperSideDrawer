@@ -11,4 +11,5 @@ import UIKit
 // Presenter to Router
 protocol MainContainerRouterInterface: class {
     func presentSideMenu()
+    func embedInitialModule()
 }

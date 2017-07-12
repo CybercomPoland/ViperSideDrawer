@@ -17,5 +17,5 @@ protocol SideMenuViewInput: class {
 protocol SideMenuViewOutput: class {
     weak var delegate: SideMenuModuleDelegate? { get set }
     func viewDidLoad()
-    func hideButtonTapped()
+    func didTapButton(at index: UInt)
 }

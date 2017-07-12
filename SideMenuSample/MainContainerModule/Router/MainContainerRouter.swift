@@ -14,4 +14,8 @@ extension MainContainerRouter: MainContainerRouterInterface {
         SideMenuRouter.presentUserInterface(from: self.viewController)
     }
 
+    func embedInitialModule() {
+        guard let vc = self.viewController else { return }
+        MainOption1Router.embed(in: vc)
+    }
 }

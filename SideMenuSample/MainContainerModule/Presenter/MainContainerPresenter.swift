@@ -29,7 +29,7 @@ extension MainContainerPresenter: MainContainerInteractorOutput {
 extension MainContainerPresenter: MainContainerViewOutput {
 
     func viewDidLoad() {
-
+        self.router.embedInitialModule()
     }
 
     func handleLeftScreenEdgePan(for gestureRecognizer: UIScreenEdgePanGestureRecognizer) {

@@ -15,6 +15,14 @@ class SideMenuViewController: UIViewController {
         super.viewDidLoad()
         viewOutput?.viewDidLoad()
     }
+
+    @IBAction func option1Tapped(_ sender: Any) {
+        self.viewOutput?.didTapButton(at: 0)
+    }
+
+    @IBAction func option2Tapped(_ sender: Any) {
+        self.viewOutput?.didTapButton(at: 1)
+    }
 }
 
 extension SideMenuViewController: SideMenuViewInput {
