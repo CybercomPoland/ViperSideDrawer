@@ -8,7 +8,6 @@
 
 import Foundation
 
-protocol SideMenuModuleDelegate {
-    var sideMenuModule: SideMenuModuleInterface? { get set }
-    func didSelectOption(at index: UInt)
+public protocol SideMenuModuleDelegate: class {
+    func sideMenuDidSelectOption(at index: UInt)
 }

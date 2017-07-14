@@ -6,8 +6,9 @@
 //  Copyright © 2017 Aleksander Maj. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 // Presenter to Router
 protocol MainOption1RouterInterface: class {
+    static func embed(in parentViewController: UIViewController)
 }

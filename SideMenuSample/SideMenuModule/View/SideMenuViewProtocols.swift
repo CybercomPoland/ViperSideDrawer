@@ -15,7 +15,6 @@ protocol SideMenuViewInput: class {
 
 // View to Presenter
 protocol SideMenuViewOutput: class {
-    weak var delegate: SideMenuModuleDelegate? { get set }
     func viewDidLoad()
     func didTapButton(at index: UInt)
 }

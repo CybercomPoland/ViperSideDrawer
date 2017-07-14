@@ -46,7 +46,7 @@ class SideMenuRouter {
     var slideInPresentationManager: SlideInPresentationManager?
 
     // MARK: instantiation of module
-    static func instantiateModule() -> SideMenuViewController? {
+    static func instantiateModule(with delegate: SideMenuModuleDelegate?) -> SideMenuViewController? {
 
         guard (Bundle.main.path(forResource: storyboardName, ofType: "storyboardc") != nil) else {
             print("Could not find path for resource \(storyboardName).storyboard")
@@ -74,6 +74,7 @@ class SideMenuRouter {
         let dataManager = SideMenuDataManager()
         let interactor  = SideMenuInteractor(dataManager: dataManager)
         let presenter   = SideMenuPresenter(interactor: interactor, router: router)
+        presenter.delegate = delegate
 
         router.viewController = vc
         presenter.view   = vc
@@ -83,8 +84,9 @@ class SideMenuRouter {
         return vc
     }
 
-    static func presentUserInterface(from parentViewController: UIViewController?) {
-        guard let viewController = self.instantiateModule() else {return}
+    static func presentUserInterface(from parentViewController: UIViewController?, with delegate: SideMenuModuleDelegate?) {
+        guard let viewController = self.instantiateModule(with: delegate) else {return}
+
         parentViewController?.present(viewController, animated: true, completion: nil)
     }
 }

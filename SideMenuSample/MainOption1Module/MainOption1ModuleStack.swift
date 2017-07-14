@@ -72,9 +72,4 @@ class MainOption1Router {
         dataManager.dataManagerOutput = interactor
         return vc
     }
-
-    static func embed(in parentViewController: UIViewController) {
-        guard let vc = MainOption1Router.instantiateModule() else { return }
-        parentViewController.embed(childViewController: vc)
-    }
 }

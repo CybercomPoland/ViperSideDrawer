@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ViperSideDrawer
 
 class MainContainerPresenter {
     weak var delegate: MainContainerModuleDelegate?
@@ -40,7 +41,24 @@ extension MainContainerPresenter: MainContainerViewOutput {
     }
 
     func menuButtonTapped() {
-        self.router.presentSideMenu()
+        self.router.presentSideMenu(with: self)
     }
 }
 
+extension MainContainerPresenter: SideMenuModuleDelegate {
+    func sideMenuDidSelectOption(at index: UInt) {
+        guard let sideMenuOption = SideMenuOption(rawValue: index) else { return }
+
+        switch sideMenuOption {
+        case .one:
+            self.router.embedModule1()
+        case .two:
+            self.router.embedModule2()
+        }
+    }
+}
+
+enum SideMenuOption: UInt {
+    case one
+    case two
+}
