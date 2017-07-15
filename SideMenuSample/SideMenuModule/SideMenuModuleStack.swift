@@ -63,7 +63,7 @@ class SideMenuRouter {
             return nil
         }
 
-        let presentationManager = SlideInPresentationManager(widthRatio: 0.75, type: .slideIn, direction: .left)
+        let presentationManager = SlideInPresentationManager(widthRatio: 5/6, type: .reveal, direction: .left)
 
         let router      = SideMenuRouter()
         router.slideInPresentationManager = presentationManager

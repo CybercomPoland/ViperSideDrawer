@@ -10,7 +10,17 @@ import UIKit
 
 public extension UIViewController {
     func embed(childViewController childVC: UIViewController) {
-        
+
+        // Remove
+        for vc in self.childViewControllers {
+            if vc != childVC {
+                vc.willMove(toParentViewController: nil)
+                vc.view.removeFromSuperview()
+                vc.removeFromParentViewController()
+            }
+        }
+
+
         addChildViewController(childVC)
 
         childVC.view.frame = self.view.bounds
