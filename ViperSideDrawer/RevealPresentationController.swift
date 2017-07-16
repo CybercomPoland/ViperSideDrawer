@@ -67,7 +67,6 @@ class RevealPresentationController: UIPresentationController {
 
     override func size(forChildContentContainer container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
         let size = CGSize(width: parentSize.width * (self.presentationDelegate?.widthRatio ?? 1.0), height: parentSize.height)
-        print("size: \(size)")
         return size
     }
 

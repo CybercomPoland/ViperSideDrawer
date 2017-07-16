@@ -14,7 +14,5 @@ extension MainOption2Presenter: MainOption2InteractorOutput {
 
 extension MainOption2Presenter: MainOption2ViewOutput {
 
-    func viewDidLoad() {
-        print("presenter - view did load")
-    }
+    func viewDidLoad() {}
 }
