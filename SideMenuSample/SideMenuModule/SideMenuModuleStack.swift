@@ -22,19 +22,6 @@ class SideMenuInteractor {
     }
 }
 
-class SideMenuPresenter {
-    weak var delegate: SideMenuModuleDelegate?
-
-    private (set) var router: SideMenuRouter
-    private (set) var interactor: SideMenuInteractorInput
-    fileprivate (set) weak var view: SideMenuViewInput?
-
-    fileprivate init(interactor: SideMenuInteractor, router: SideMenuRouter) {
-        self.interactor = interactor
-        self.router          = router
-    }
-}
-
 class SideMenuRouter {
     private (set) weak var viewController: SideMenuViewController?
     private init() {}
@@ -73,11 +60,10 @@ class SideMenuRouter {
 
         let dataManager = SideMenuDataManager()
         let interactor  = SideMenuInteractor(dataManager: dataManager)
-        let presenter   = SideMenuPresenter(interactor: interactor, router: router)
+        let presenter   = SideMenuPresenter(interactor: interactor, router: router, view: vc)
         presenter.delegate = delegate
 
         router.viewController = vc
-        presenter.view   = vc
         vc.viewOutput                 = presenter
         interactor.interactorOutput   = presenter
         dataManager.dataManagerOutput = interactor

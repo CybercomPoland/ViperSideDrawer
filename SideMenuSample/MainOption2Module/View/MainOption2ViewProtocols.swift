@@ -17,4 +17,5 @@ protocol MainOption2ViewInput: class {
 protocol MainOption2ViewOutput: class {
     weak var delegate: MainOption2ModuleDelegate? { get set }
     func viewDidLoad()
+    func menuButtonTapped()
 }

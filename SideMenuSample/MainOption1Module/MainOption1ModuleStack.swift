@@ -22,19 +22,6 @@ class MainOption1Interactor {
     }
 }
 
-class MainOption1Presenter {
-    weak var delegate: MainOption1ModuleDelegate?
-
-    private (set) var router: MainOption1Router
-    private (set) var interactor: MainOption1InteractorInput
-    fileprivate (set) weak var view: MainOption1ViewInput?
-
-    fileprivate init(interactor: MainOption1Interactor, router: MainOption1Router) {
-        self.interactor = interactor
-        self.router          = router
-    }
-}
-
 class MainOption1Router {
     private (set) weak var viewController: MainOption1ViewController?
     private init() {}
@@ -44,7 +31,7 @@ class MainOption1Router {
     static let storyboardID = viewControllerType + "ID"
 
     // MARK: instantiation of module
-    static func instantiateModule() -> MainOption1ViewController? {
+    static func instantiateModule(withDelegate delegate: MenuOptionDelegate?) -> UIViewController? {
 
         guard (Bundle.main.path(forResource: storyboardName, ofType: "storyboardc") != nil) else {
             print("Could not find path for resource \(storyboardName).storyboard")
@@ -63,13 +50,14 @@ class MainOption1Router {
         let router      = MainOption1Router()
         let dataManager = MainOption1DataManager()
         let interactor  = MainOption1Interactor(dataManager: dataManager)
-        let presenter   = MainOption1Presenter(interactor: interactor, router: router)
+        let presenter   = MainOption1Presenter(interactor: interactor, router: router, view: vc)
+        presenter.menuOptionDelegate = delegate
 
         router.viewController = vc
-        presenter.view   = vc
         vc.viewOutput                 = presenter
         interactor.interactorOutput   = presenter
         dataManager.dataManagerOutput = interactor
-        return vc
+        let navigationController = UINavigationController(rootViewController: vc)
+        return navigationController
     }
 }

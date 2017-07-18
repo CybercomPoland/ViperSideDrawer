@@ -14,7 +14,7 @@ class MainContainerPresenter {
 
     private (set) var router: MainContainerRouter
     private (set) var interactor: MainContainerInteractorInput
-    private (set) weak var view: MainContainerViewInput?
+    private (set) weak var view: MainContainerViewController?
 
     init(interactor: MainContainerInteractor, router: MainContainerRouter, view: MainContainerViewController) {
         self.interactor = interactor
@@ -30,7 +30,7 @@ extension MainContainerPresenter: MainContainerInteractorOutput {
 extension MainContainerPresenter: MainContainerViewOutput {
 
     func viewDidLoad() {
-        self.router.embedInitialModule()
+        self.router.embedInitialModule(in: self)
     }
 
     func handleLeftScreenEdgePan(for gestureRecognizer: UIScreenEdgePanGestureRecognizer) {
@@ -51,10 +51,21 @@ extension MainContainerPresenter: SideMenuModuleDelegate {
 
         switch sideMenuOption {
         case .one:
-            self.router.embedModule1()
+            self.router.embedModule1(in: self)
         case .two:
-            self.router.embedModule2()
+            self.router.embedModule2(in: self)
         }
+    }
+}
+
+extension MainContainerPresenter: MenuOptionDelegate {
+
+    func didRequestToShowMenu() {
+        self.router.presentSideMenu(with: self)
+    }
+
+    func show(menuOptionView: UIViewController) {
+        self.view?.embed(childViewController: menuOptionView)
     }
 }
 

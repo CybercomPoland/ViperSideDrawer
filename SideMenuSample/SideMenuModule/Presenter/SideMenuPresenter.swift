@@ -7,6 +7,21 @@
 //
 
 import Foundation
+import ViperSideDrawer
+
+class SideMenuPresenter {
+    weak var delegate: SideMenuModuleDelegate?
+
+    private (set) var router: SideMenuRouter
+    private (set) var interactor: SideMenuInteractorInput
+    private (set) weak var view: SideMenuViewInput?
+
+    init(interactor: SideMenuInteractor, router: SideMenuRouter, view: SideMenuViewController) {
+        self.interactor = interactor
+        self.router = router
+        self.view = view
+    }
+}
 
 extension SideMenuPresenter: SideMenuInteractorOutput {
 

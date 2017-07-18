@@ -10,5 +10,4 @@ import UIKit
 
 // Presenter to Router
 protocol MainOption1RouterInterface: class {
-    static func embed(in parentViewController: UIViewController)
 }

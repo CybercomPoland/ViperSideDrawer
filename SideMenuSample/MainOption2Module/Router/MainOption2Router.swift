@@ -7,12 +7,12 @@
 //
 
 import UIKit
+import ViperSideDrawer
 
 extension MainOption2Router: MainOption2RouterInterface {
 
-    static func embed(in parentViewController: UIViewController) {
-        guard let vc = MainOption2Router.instantiateModule() else { return }
-        parentViewController.embed(childViewController: vc)
+    static func embed(in containerModule: MenuOptionDelegate) {
+        guard let vc = self.instantiateModule(withDelegate: containerModule) else { return }
+        containerModule.show(menuOptionView: vc)
     }
-
 }

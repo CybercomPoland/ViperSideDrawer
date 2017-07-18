@@ -12,7 +12,7 @@ import ViperSideDrawer
 // Presenter to Router
 protocol MainContainerRouterInterface: class {
     func presentSideMenu(with delegate: SideMenuModuleDelegate?)
-    func embedInitialModule()
-    func embedModule1()
-    func embedModule2()
+    func embedInitialModule(in containerModule: MenuOptionDelegate)
+    func embedModule1(in containerModule: MenuOptionDelegate)
+    func embedModule2(in containerModule: MenuOptionDelegate)
 }

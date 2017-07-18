@@ -11,7 +11,7 @@ import UIKit
 public extension UIViewController {
     func embed(childViewController childVC: UIViewController) {
 
-        // Remove
+        // Remove child VCs
         for vc in self.childViewControllers {
             if vc != childVC {
                 vc.willMove(toParentViewController: nil)
@@ -19,7 +19,6 @@ public extension UIViewController {
                 vc.removeFromParentViewController()
             }
         }
-
 
         addChildViewController(childVC)
 

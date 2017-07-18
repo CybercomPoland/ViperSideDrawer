@@ -15,17 +15,15 @@ extension MainContainerRouter: MainContainerRouterInterface {
         SideMenuRouter.presentUserInterface(from: self.viewController, with: delegate)
     }
 
-    func embedInitialModule() {
-        embedModule1()
+    func embedInitialModule(in containerModule: MenuOptionDelegate) {
+        embedModule1(in: containerModule)
     }
 
-    func embedModule1() {
-        guard let vc = self.viewController else { return }
-        MainOption1Router.embed(in: vc)
+    func embedModule1(in containerModule: MenuOptionDelegate) {
+        MainOption1Router.embed(in: containerModule)
     }
 
-    func embedModule2() {
-        guard let vc = self.viewController else { return }
-        MainOption2Router.embed(in: vc)
+    func embedModule2(in containerModule: MenuOptionDelegate) {
+        MainOption2Router.embed(in: containerModule)
     }
 }

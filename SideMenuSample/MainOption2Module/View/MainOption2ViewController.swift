@@ -13,7 +13,18 @@ class MainOption2ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpNavigationBar()
         viewOutput?.viewDidLoad()
+    }
+    
+    // MARK: - Private
+    func setUpNavigationBar() {
+        let menuBarButton = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(menuButtonTapped))
+        self.navigationItem.leftBarButtonItem = menuBarButton
+    }
+
+    @objc func menuButtonTapped() {
+        self.viewOutput?.menuButtonTapped()
     }
 
 }

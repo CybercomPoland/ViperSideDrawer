@@ -14,7 +14,6 @@ class MainContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewOutput?.viewDidLoad()
-        setUpNavigationBar()
         setUpGestureRecognizers()
     }
 

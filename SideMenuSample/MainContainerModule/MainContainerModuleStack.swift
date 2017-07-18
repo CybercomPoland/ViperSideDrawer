@@ -52,11 +52,10 @@ class MainContainerRouter {
         let interactor  = MainContainerInteractor(dataManager: dataManager)
         let presenter   = MainContainerPresenter(interactor: interactor, router: router, view: vc)
 
-        let navigationController = UINavigationController(rootViewController: vc)
         router.viewController = vc
         vc.viewOutput = presenter
         interactor.interactorOutput = presenter
         dataManager.dataManagerOutput = interactor
-        return navigationController
+        return vc
     }
 }

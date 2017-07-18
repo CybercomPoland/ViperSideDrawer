@@ -74,6 +74,7 @@
 		40E731701F0E8383007F9786 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40E7316F1F0E8383007F9786 /* Assets.xcassets */; };
 		40E731731F0E8383007F9786 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40E731711F0E8383007F9786 /* LaunchScreen.storyboard */; };
 		40E7317E1F0E8384007F9786 /* SideMenuSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E7317D1F0E8384007F9786 /* SideMenuSampleTests.swift */; };
+		40F54CC51F1BAD1200E52F15 /* MenuOptionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F54CC41F1BAD1200E52F15 /* MenuOptionDelegate.swift */; };
 		A5F01D138F4276FFDDB4EB07 /* libPods-ViperSideDrawer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74DA9BF599CBB76E7EFB3598 /* libPods-ViperSideDrawer.a */; };
 		E7BB36EEB029492EBE7A6061 /* libPods-ViperSideDrawerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8138D58137638932C9E0D627 /* libPods-ViperSideDrawerTests.a */; };
 /* End PBXBuildFile section */
@@ -180,6 +181,7 @@
 		40E731791F0E8384007F9786 /* SideMenuSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SideMenuSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		40E7317D1F0E8384007F9786 /* SideMenuSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuSampleTests.swift; sourceTree = "<group>"; };
 		40E7317F1F0E8384007F9786 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40F54CC41F1BAD1200E52F15 /* MenuOptionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuOptionDelegate.swift; sourceTree = "<group>"; };
 		74DA9BF599CBB76E7EFB3598 /* libPods-ViperSideDrawer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ViperSideDrawer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8138D58137638932C9E0D627 /* libPods-ViperSideDrawerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ViperSideDrawerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DD911DD0F81DE0F4527B210 /* Pods-ViperSideDrawerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViperSideDrawerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ViperSideDrawerTests/Pods-ViperSideDrawerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -497,6 +499,7 @@
 			children = (
 				40940C8D1F16633B007AE34F /* Container */,
 				40516CDD1F0FA29C00605CCF /* SideMenu */,
+				40F54CC61F1BAECB00E52F15 /* MenuOption */,
 				40E7308D1F0E5D01007F9786 /* SideDrawerTransition */,
 				4052600E1F0E5B370053F5D9 /* ViperSideDrawer.h */,
 				4052600F1F0E5B370053F5D9 /* Info.plist */,
@@ -557,6 +560,14 @@
 				40E7317F1F0E8384007F9786 /* Info.plist */,
 			);
 			path = SideMenuSampleTests;
+			sourceTree = "<group>";
+		};
+		40F54CC61F1BAECB00E52F15 /* MenuOption */ = {
+			isa = PBXGroup;
+			children = (
+				40F54CC41F1BAD1200E52F15 /* MenuOptionDelegate.swift */,
+			);
+			name = MenuOption;
 			sourceTree = "<group>";
 		};
 		7F76A622626D36A42AE076CD /* Frameworks */ = {
@@ -851,6 +862,7 @@
 				40516CDF1F0FA39C00605CCF /* SideMenuModuleDelegate.swift in Sources */,
 				40E7308A1F0E5CF5007F9786 /* SlideInPresentationAnimator.swift in Sources */,
 				40E7308B1F0E5CF5007F9786 /* RevealPresentationAnimator.swift in Sources */,
+				40F54CC51F1BAD1200E52F15 /* MenuOptionDelegate.swift in Sources */,
 				40E730881F0E5CF5007F9786 /* SlideInPresentationManager.swift in Sources */,
 				40940C8F1F166371007AE34F /* UIViewController+Container.swift in Sources */,
 				40E7308C1F0E5CF5007F9786 /* RevealPresentationController.swift in Sources */,

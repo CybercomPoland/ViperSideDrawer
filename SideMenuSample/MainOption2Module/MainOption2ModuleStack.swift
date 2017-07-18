@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ViperSideDrawer
 
 class MainOption2DataManager {
     fileprivate (set) weak var dataManagerOutput: MainOption2DataManagerOutput?
@@ -21,19 +22,6 @@ class MainOption2Interactor {
     }
 }
 
-class MainOption2Presenter {
-    weak var delegate: MainOption2ModuleDelegate?
-
-    private (set) var router: MainOption2Router
-    private (set) var interactor: MainOption2InteractorInput
-    fileprivate (set) weak var view: MainOption2ViewInput?
-
-    fileprivate init(interactor: MainOption2Interactor, router: MainOption2Router) {
-        self.interactor = interactor
-        self.router          = router
-    }
-}
-
 class MainOption2Router {
     private (set) weak var viewController: MainOption2ViewController?
     private init() {}
@@ -43,7 +31,7 @@ class MainOption2Router {
     static let storyboardID = viewControllerType + "ID"
 
     // MARK: instantiation of module
-    static func instantiateModule() -> MainOption2ViewController? {
+    static func instantiateModule(withDelegate delegate: MenuOptionDelegate) -> UIViewController? {
 
         guard (Bundle.main.path(forResource: storyboardName, ofType: "storyboardc") != nil) else {
             print("Could not find path for resource \(storyboardName).storyboard")
@@ -64,13 +52,14 @@ class MainOption2Router {
         let router      = MainOption2Router()
         let dataManager = MainOption2DataManager()
         let interactor  = MainOption2Interactor(dataManager: dataManager)
-        let presenter   = MainOption2Presenter(interactor: interactor, router: router)
+        let presenter   = MainOption2Presenter(interactor: interactor, router: router, view: vc)
 
+        presenter.menuOptionDelegate = delegate
         router.viewController = vc
-        presenter.view   = vc
         vc.viewOutput                 = presenter
         interactor.interactorOutput   = presenter
         dataManager.dataManagerOutput = interactor
-        return vc
+        let navigationController = UINavigationController(rootViewController: vc)
+        return navigationController
     }
 }

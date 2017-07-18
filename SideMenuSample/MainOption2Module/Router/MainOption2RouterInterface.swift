@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import ViperSideDrawer
 
 // Presenter to Router
 protocol MainOption2RouterInterface: class {
-    static func embed(in parentViewController: UIViewController)
+    static func embed(in containerModule: MenuOptionDelegate)
 }
