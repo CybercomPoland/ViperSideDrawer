@@ -29,16 +29,16 @@ class RevealPresentationController: UIPresentationController {
     fileprivate var dimmingView: UIView!
 
     override func presentationTransitionWillBegin() {
-        //        self.containerView?.insertSubview(self.dimmingView, at: 0)
-        //
-        //        NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "V:|[dimmingView]|",
-        //                                                                   options: [],
-        //                                                                   metrics: nil,
-        //                                                                   views: ["dimmingView": dimmingView]))
-        //        NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|[dimmingView]|",
-        //                                                                   options: [],
-        //                                                                   metrics: nil,
-        //                                                                   views: ["dimmingView": dimmingView]))
+        self.containerView?.insertSubview(self.dimmingView, at: 0)
+
+        NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "V:|[dimmingView]|",
+                                                                   options: [],
+                                                                   metrics: nil,
+                                                                   views: ["dimmingView": dimmingView]))
+        NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|[dimmingView]|",
+                                                                   options: [],
+                                                                   metrics: nil,
+                                                                   views: ["dimmingView": dimmingView]))
 
         guard let coordinator = presentedViewController.transitionCoordinator else {
             self.dimmingView.alpha = 1.0
@@ -88,8 +88,15 @@ class RevealPresentationController: UIPresentationController {
 private extension RevealPresentationController {
     func setUpDimmingView() {
         self.dimmingView = UIView()
-        self.dimmingView.translatesAutoresizingMaskIntoConstraints = true
+        self.dimmingView.translatesAutoresizingMaskIntoConstraints = false
         self.dimmingView.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
         self.dimmingView.alpha = 0.0
+
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:)))
+        self.dimmingView.addGestureRecognizer(recognizer)
+    }
+
+    @objc dynamic func handleTap(recognizer: UITapGestureRecognizer) {
+        presentingViewController.dismiss(animated: true)
     }
 }
