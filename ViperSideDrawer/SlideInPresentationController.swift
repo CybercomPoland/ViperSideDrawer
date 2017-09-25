@@ -84,6 +84,18 @@ class SlideInPresentationController: UIPresentationController {
 
 }
 
+extension SlideInPresentationController: SideDrawerPresentationControllerInput {
+    var isUserInteractionEnabled: Bool {
+        set {
+            self.dimmingView.isUserInteractionEnabled = newValue
+        }
+
+        get {
+            return self.dimmingView.isUserInteractionEnabled
+        }
+    }
+}
+
 // MARK: - Private
 private extension SlideInPresentationController {
     func setUpDimmingView() {

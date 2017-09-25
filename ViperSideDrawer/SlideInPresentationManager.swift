@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SideDrawerPresentationControllerInput: class {
+    var isUserInteractionEnabled: Bool {get set}
+}
+
 public enum SideDrawerPresentationDirection {
     case left
     case right
@@ -23,6 +27,7 @@ public class SlideInPresentationManager: NSObject {
     let direction: SideDrawerPresentationDirection
     let type: SideDrawerPresentationType
     let widthRatio: CGFloat
+    fileprivate weak var presentationControllerInput: SideDrawerPresentationControllerInput?
 
 //    var swipeInteractionController: SwipeInteractionController?
 
@@ -30,6 +35,10 @@ public class SlideInPresentationManager: NSObject {
         self.widthRatio = widthRatio
         self.type = type
         self.direction = direction
+    }
+
+    public func setUserInteraction(enabled: Bool) {
+        presentationControllerInput?.isUserInteractionEnabled = enabled
     }
 }
 
@@ -42,10 +51,12 @@ extension SlideInPresentationManager: UIViewControllerTransitioningDelegate, Sli
         case .slideIn:
             let presentationController = SlideInPresentationController(presentedViewController: presented, presenting: presenting, direction: self.direction)
             presentationController.presentationDelegate = self
+            self.presentationControllerInput = presentationController
             return presentationController
         case .reveal:
             let presentationController = RevealPresentationController(presentedViewController: presented, presenting: presenting, direction: self.direction)
             presentationController.presentationDelegate = self
+            self.presentationControllerInput = presentationController
             return presentationController
         }
     }
