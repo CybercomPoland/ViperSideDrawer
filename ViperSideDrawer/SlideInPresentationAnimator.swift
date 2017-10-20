@@ -55,8 +55,8 @@ extension SlideInPresentationAnimator: UIViewControllerAnimatedTransitioning {
 
         UIView.animate(withDuration: animationDuration, animations: {
             childVC.view.frame = childFinalFrame
-        }) { (finished) in
-            transitionContext.completeTransition(finished)
+        }) { _ in
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
     }
 

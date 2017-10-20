@@ -66,8 +66,8 @@ extension RevealPresentationAnimator: UIViewControllerAnimatedTransitioning {
         UIView.animate(withDuration: animationDuration, animations: {
             childVC.view.frame = childFinalFrame
             parentVC.view.frame = parentFinalFrame
-        }) { (finished) in
-            transitionContext.completeTransition(finished)
+        }) { _ in
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
     }
     

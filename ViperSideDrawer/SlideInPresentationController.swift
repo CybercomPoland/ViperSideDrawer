@@ -10,16 +10,19 @@ import UIKit
 
 protocol SlideInPresentationControllerDelegate: class {
     var widthRatio: CGFloat { get }
+    var swipePercentThreshold: CGFloat { get }
 }
 
 class SlideInPresentationController: UIPresentationController {
 
     weak var presentationDelegate: SlideInPresentationControllerDelegate?
 
-    private var direction: SideDrawerPresentationDirection
+    fileprivate var direction: SideDrawerPresentationDirection
+    fileprivate var interactor: SwipeInteractionController?
 
-    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, direction: SideDrawerPresentationDirection) {
+    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, direction: SideDrawerPresentationDirection, interactor: SwipeInteractionController?) {
         self.direction = direction
+        self.interactor = interactor
 
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
 
@@ -92,11 +95,23 @@ private extension SlideInPresentationController {
         self.dimmingView.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
         self.dimmingView.alpha = 0.0
 
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:)))
-        self.dimmingView.addGestureRecognizer(recognizer)
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:)))
+        let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(recognizer:)))
+        self.dimmingView.addGestureRecognizer(tapRecognizer)
+        self.dimmingView.addGestureRecognizer(panRecognizer)
     }
 
     @objc dynamic func handleTap(recognizer: UITapGestureRecognizer) {
         presentingViewController.dismiss(animated: true)
+    }
+
+    @objc dynamic func handlePan(recognizer: UIPanGestureRecognizer) {
+        guard let viewBounds = presentedView?.bounds,
+            let percentThreshold = presentationDelegate?.swipePercentThreshold else { return }
+        let translation = recognizer.translation(in: self.dimmingView)
+        let progress = TransitionHelper.calculateProgress(translation, viewBounds: viewBounds, direction: direction)
+        TransitionHelper.translateGestureToInteractor(recognizer.state, progress: progress, percentThreshold: percentThreshold, interactor: interactor) {
+            presentingViewController.dismiss(animated: true)
+        }
     }
 }
