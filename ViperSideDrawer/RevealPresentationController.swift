@@ -78,7 +78,7 @@ class RevealPresentationController: UIPresentationController {
         frame.size = size(forChildContentContainer: presentedViewController, withParentContainerSize: containerView!.bounds.size)
         switch direction {
         case .right:
-            frame.origin.x = containerView!.frame.width * (self.presentationDelegate?.widthRatio ?? 1.0)
+            frame.origin.x = containerView!.frame.width - (containerView!.frame.width * (self.presentationDelegate?.widthRatio ?? 1.0))
         default:
             break
         }
