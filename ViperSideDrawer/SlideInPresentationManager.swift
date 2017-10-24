@@ -25,13 +25,14 @@ public class SlideInPresentationManager: NSObject {
     let widthRatio: CGFloat
     let swipePercentThreshold: CGFloat
 
-    let swipeInteractionController = SwipeInteractionController()
+    let swipeInteractionController: SwipeInteractionController
 
-    public init(widthRatio: CGFloat, swipePercentThreshold: CGFloat = 0.3, type: SideDrawerPresentationType, direction: SideDrawerPresentationDirection) {
+    public init(widthRatio: CGFloat, swipePercentThreshold: CGFloat = 0.3, type: SideDrawerPresentationType, direction: SideDrawerPresentationDirection, swipeInteractor: SwipeInteractionController? = nil) {
         self.widthRatio = widthRatio
         self.type = type
         self.direction = direction
         self.swipePercentThreshold = swipePercentThreshold
+        self.swipeInteractionController = swipeInteractor ?? SwipeInteractionController()
     }
 }
 

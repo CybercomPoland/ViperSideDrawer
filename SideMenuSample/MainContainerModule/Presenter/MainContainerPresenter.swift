@@ -15,6 +15,7 @@ class MainContainerPresenter {
     private (set) var router: MainContainerRouter
     private (set) var interactor: MainContainerInteractorInput
     private (set) weak var view: MainContainerViewController?
+    fileprivate let swipeInteractionController = SwipeInteractionController()
 
     init(interactor: MainContainerInteractor, router: MainContainerRouter, view: MainContainerViewController) {
         self.interactor = interactor
@@ -34,14 +35,16 @@ extension MainContainerPresenter: MainContainerViewOutput {
     }
 
     func handleLeftScreenEdgePan(for gestureRecognizer: UIScreenEdgePanGestureRecognizer) {
-//        let shouldStartTransition = self.swipeInteractionController.shouldStartInteractiveTransition(for: gestureRecognizer)
-//        if shouldStartTransition {
-//            self.router.presentSideMenu(with: self.swipeInteractionController)
-//        }
+        guard let view = view?.view else { return }
+        let translation = gestureRecognizer.translation(in: view)
+        let progress = TransitionHelper.calculateProgress(translation, viewBounds: view.bounds, direction: .right)
+        TransitionHelper.translateGestureToInteractor(gestureRecognizer.state, progress: progress, percentThreshold: 0.3, interactor: swipeInteractionController) {
+            self.router.presentSideMenu(with: self, swipeInteractor: swipeInteractionController)
+        }
     }
 
     func menuButtonTapped() {
-        self.router.presentSideMenu(with: self)
+        self.router.presentSideMenu(with: self, swipeInteractor: nil)
     }
 }
 
@@ -61,7 +64,7 @@ extension MainContainerPresenter: SideMenuModuleDelegate {
 extension MainContainerPresenter: MenuOptionDelegate {
 
     func didRequestToShowMenu() {
-        self.router.presentSideMenu(with: self)
+        self.router.presentSideMenu(with: self, swipeInteractor: nil)
     }
 
     func show(menuOptionView: UIViewController) {

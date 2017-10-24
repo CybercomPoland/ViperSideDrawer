@@ -8,8 +8,8 @@
 
 import UIKit
 
-class TransitionHelper {
-    static func calculateProgress(_ translationInView: CGPoint, viewBounds: CGRect, direction: SideDrawerPresentationDirection) -> CGFloat {
+public class TransitionHelper {
+    public static func calculateProgress(_ translationInView: CGPoint, viewBounds: CGRect, direction: SideDrawerPresentationDirection) -> CGFloat {
         let pointOnAxis: CGFloat = translationInView.x
         let axisLength: CGFloat = viewBounds.width
         let movementOnAxis = pointOnAxis / axisLength
@@ -21,13 +21,13 @@ class TransitionHelper {
             positiveMovementOnAxisPercentage = fmaxf(positiveMovementOnAxis, -1.0)
             return CGFloat (-positiveMovementOnAxisPercentage)
         case .right: // Positive
-            positiveMovementOnAxis = fminf(Float(movementOnAxis), 0.0)
-            positiveMovementOnAxisPercentage = fmaxf(positiveMovementOnAxis, 1.0)
+            positiveMovementOnAxis = fmaxf(Float(movementOnAxis), 0.0)
+            positiveMovementOnAxisPercentage = fminf(positiveMovementOnAxis, 1.0)
             return CGFloat (positiveMovementOnAxisPercentage)
         }
     }
 
-    static func translateGestureToInteractor(_ gestureState: UIGestureRecognizerState, progress: CGFloat, percentThreshold: CGFloat, interactor: SwipeInteractionController?, triggerSegue: () -> ()) {
+    public static func translateGestureToInteractor(_ gestureState: UIGestureRecognizerState, progress: CGFloat, percentThreshold: CGFloat, interactor: SwipeInteractionController?, triggerSegue: () -> ()) {
         guard let interactor = interactor else { return }
         switch gestureState {
         case .began:

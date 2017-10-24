@@ -11,8 +11,8 @@ import ViperSideDrawer
 
 extension MainContainerRouter: MainContainerRouterInterface {
 
-    func presentSideMenu(with delegate: SideMenuModuleDelegate?) {
-        SideMenuRouter.presentUserInterface(from: self.viewController, with: delegate)
+    func presentSideMenu(with delegate: SideMenuModuleDelegate?, swipeInteractor: SwipeInteractionController?) {
+        SideMenuRouter.presentUserInterface(from: self.viewController, with: delegate, swipeInteractor: swipeInteractor)
     }
 
     func embedInitialModule(in containerModule: MenuOptionDelegate) {
