@@ -25,14 +25,14 @@ public class SlideInPresentationManager: NSObject {
     let widthRatio: CGFloat
     let swipePercentThreshold: CGFloat
 
-    let swipeInteractionController: SwipeInteractionController
+    let percentInteractiveTransition: PercentInteractiveTransition
 
-    public init(widthRatio: CGFloat, swipePercentThreshold: CGFloat = 0.3, type: SideDrawerPresentationType, direction: SideDrawerPresentationDirection, swipeInteractor: SwipeInteractionController? = nil) {
+    public init(widthRatio: CGFloat, swipePercentThreshold: CGFloat = 0.3, type: SideDrawerPresentationType, direction: SideDrawerPresentationDirection, interactiveTransition: PercentInteractiveTransition? = nil) {
         self.widthRatio = widthRatio
         self.type = type
         self.direction = direction
         self.swipePercentThreshold = swipePercentThreshold
-        self.swipeInteractionController = swipeInteractor ?? SwipeInteractionController()
+        self.percentInteractiveTransition = interactiveTransition ?? PercentInteractiveTransition()
     }
 }
 
@@ -43,11 +43,11 @@ extension SlideInPresentationManager: UIViewControllerTransitioningDelegate, Sli
     public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         switch type {
         case .slideIn:
-            let presentationController = SlideInPresentationController(presentedViewController: presented, presenting: presenting, direction: self.direction, interactor: swipeInteractionController)
+            let presentationController = SlideInPresentationController(presentedViewController: presented, presenting: presenting, direction: self.direction, percentInteractiveTransition: percentInteractiveTransition)
             presentationController.presentationDelegate = self
             return presentationController
         case .reveal:
-            let presentationController = RevealPresentationController(presentedViewController: presented, presenting: presenting, direction: self.direction, interactor: swipeInteractionController)
+            let presentationController = RevealPresentationController(presentedViewController: presented, presenting: presenting, direction: self.direction, percentInteractiveTransition: percentInteractiveTransition)
             presentationController.presentationDelegate = self
             return presentationController
         }
@@ -72,10 +72,10 @@ extension SlideInPresentationManager: UIViewControllerTransitioningDelegate, Sli
     }
 
     public func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return swipeInteractionController
+        return percentInteractiveTransition
     }
 
     public func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return swipeInteractionController.interactionInProgress ? swipeInteractionController : nil
+        return percentInteractiveTransition.interactionInProgress ? percentInteractiveTransition : nil
     }
 }

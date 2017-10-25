@@ -8,8 +8,8 @@
 
 import UIKit
 
-public class TransitionHelper {
-    public static func calculateProgress(_ translationInView: CGPoint, viewBounds: CGRect, direction: SideDrawerPresentationDirection) -> CGFloat {
+class TransitionHelper {
+    static func calculateProgress(_ translationInView: CGPoint, viewBounds: CGRect, direction: SideDrawerPresentationDirection) -> CGFloat {
         let pointOnAxis: CGFloat = translationInView.x
         let axisLength: CGFloat = viewBounds.width
         let movementOnAxis = pointOnAxis / axisLength
@@ -27,8 +27,8 @@ public class TransitionHelper {
         }
     }
 
-    public static func translateGestureToInteractor(_ gestureState: UIGestureRecognizerState, progress: CGFloat, percentThreshold: CGFloat, interactor: SwipeInteractionController?, triggerSegue: () -> ()) {
-        guard let interactor = interactor else { return }
+    static func translateGestureToInteractor(_ gestureState: UIGestureRecognizerState, progress: CGFloat, percentThreshold: CGFloat, percentInteractiveTransition: PercentInteractiveTransition?, triggerSegue: () -> ()) {
+        guard let interactor = percentInteractiveTransition else { return }
         switch gestureState {
         case .began:
             interactor.interactionInProgress = true

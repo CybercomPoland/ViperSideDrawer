@@ -18,11 +18,11 @@ class SlideInPresentationController: UIPresentationController {
     weak var presentationDelegate: SlideInPresentationControllerDelegate?
 
     fileprivate var direction: SideDrawerPresentationDirection
-    fileprivate var interactor: SwipeInteractionController?
+    fileprivate var percentInteractiveTransition: PercentInteractiveTransition?
 
-    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, direction: SideDrawerPresentationDirection, interactor: SwipeInteractionController?) {
+    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, direction: SideDrawerPresentationDirection, percentInteractiveTransition: PercentInteractiveTransition?) {
         self.direction = direction
-        self.interactor = interactor
+        self.percentInteractiveTransition = percentInteractiveTransition
 
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
 
@@ -110,7 +110,7 @@ private extension SlideInPresentationController {
             let percentThreshold = presentationDelegate?.swipePercentThreshold else { return }
         let translation = recognizer.translation(in: self.dimmingView)
         let progress = TransitionHelper.calculateProgress(translation, viewBounds: viewBounds, direction: direction)
-        TransitionHelper.translateGestureToInteractor(recognizer.state, progress: progress, percentThreshold: percentThreshold, interactor: interactor) {
+        TransitionHelper.translateGestureToInteractor(recognizer.state, progress: progress, percentThreshold: percentThreshold, percentInteractiveTransition: percentInteractiveTransition) {
             presentingViewController.dismiss(animated: true)
         }
     }
