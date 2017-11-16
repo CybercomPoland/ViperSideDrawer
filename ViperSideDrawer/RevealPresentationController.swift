@@ -87,6 +87,18 @@ class RevealPresentationController: UIPresentationController {
 
 }
 
+extension RevealPresentationController: SideDrawerPresentationControllerInput {
+    var isUserInteractionEnabled: Bool {
+        set {
+            dimmingView.isUserInteractionEnabled = newValue
+        }
+
+        get {
+            return dimmingView.isUserInteractionEnabled
+        }
+    }
+}
+
 // MARK: - Private
 private extension RevealPresentationController {
     func setUpDimmingView() {

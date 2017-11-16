@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SideDrawerPresentationControllerInput: class {
+    var isUserInteractionEnabled: Bool {get set}
+}
+
 public enum SideDrawerPresentationDirection {
     case left
     case right
@@ -24,7 +28,8 @@ public class SlideInPresentationManager: NSObject {
     let type: SideDrawerPresentationType
     let widthRatio: CGFloat
     let swipePercentThreshold: CGFloat
-
+    
+    fileprivate weak var presentationControllerInput: SideDrawerPresentationControllerInput?
     let percentInteractiveTransition: PercentInteractiveTransition
 
     public init(widthRatio: CGFloat, swipePercentThreshold: CGFloat = 0.3, type: SideDrawerPresentationType, direction: SideDrawerPresentationDirection, interactiveTransition: PercentInteractiveTransition? = nil) {
@@ -33,6 +38,10 @@ public class SlideInPresentationManager: NSObject {
         self.direction = direction
         self.swipePercentThreshold = swipePercentThreshold
         self.percentInteractiveTransition = interactiveTransition ?? PercentInteractiveTransition()
+    }
+
+    public func setUserInteraction(enabled: Bool) {
+        presentationControllerInput?.isUserInteractionEnabled = enabled
     }
 }
 
@@ -45,10 +54,12 @@ extension SlideInPresentationManager: UIViewControllerTransitioningDelegate, Sli
         case .slideIn:
             let presentationController = SlideInPresentationController(presentedViewController: presented, presenting: presenting, direction: self.direction, percentInteractiveTransition: percentInteractiveTransition)
             presentationController.presentationDelegate = self
+            presentationControllerInput = presentationController
             return presentationController
         case .reveal:
             let presentationController = RevealPresentationController(presentedViewController: presented, presenting: presenting, direction: self.direction, percentInteractiveTransition: percentInteractiveTransition)
             presentationController.presentationDelegate = self
+            presentationControllerInput = presentationController
             return presentationController
         }
     }
