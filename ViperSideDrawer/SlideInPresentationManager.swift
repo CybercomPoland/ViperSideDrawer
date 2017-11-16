@@ -51,12 +51,12 @@ extension SlideInPresentationManager: UIViewControllerTransitioningDelegate, Sli
         case .slideIn:
             let presentationController = SlideInPresentationController(presentedViewController: presented, presenting: presenting, direction: self.direction)
             presentationController.presentationDelegate = self
-            self.presentationControllerInput = presentationController
+            presentationControllerInput = presentationController
             return presentationController
         case .reveal:
             let presentationController = RevealPresentationController(presentedViewController: presented, presenting: presenting, direction: self.direction)
             presentationController.presentationDelegate = self
-            self.presentationControllerInput = presentationController
+            presentationControllerInput = presentationController
             return presentationController
         }
     }
