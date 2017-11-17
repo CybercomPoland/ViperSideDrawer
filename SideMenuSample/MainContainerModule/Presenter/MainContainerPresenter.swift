@@ -15,11 +15,13 @@ class MainContainerPresenter {
     private (set) var router: MainContainerRouter
     private (set) var interactor: MainContainerInteractorInput
     private (set) weak var view: MainContainerViewController?
+    fileprivate let swipeInteractionController: SwipeInteractionController
 
-    init(interactor: MainContainerInteractor, router: MainContainerRouter, view: MainContainerViewController) {
+    init(interactor: MainContainerInteractor, router: MainContainerRouter, view: MainContainerViewController, swipeInteractionController: SwipeInteractionController) {
         self.interactor = interactor
         self.router = router
         self.view = view
+        self.swipeInteractionController = swipeInteractionController
     }
 }
 
@@ -34,10 +36,10 @@ extension MainContainerPresenter: MainContainerViewOutput {
     }
 
     func handleLeftScreenEdgePan(for gestureRecognizer: UIScreenEdgePanGestureRecognizer) {
-//        let shouldStartTransition = self.swipeInteractionController.shouldStartInteractiveTransition(for: gestureRecognizer)
-//        if shouldStartTransition {
-//            self.router.presentSideMenu(with: self.swipeInteractionController)
-//        }
+        guard let view = view?.view else { return }
+        swipeInteractionController.handleScreenEdgePanGesture (gesture: gestureRecognizer, view: view) {
+            self.router.presentSideMenu(with: self, swipeInteractionController: swipeInteractionController)
+        }
     }
 
     func menuButtonTapped() {

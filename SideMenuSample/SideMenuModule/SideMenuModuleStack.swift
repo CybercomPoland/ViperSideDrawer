@@ -30,10 +30,14 @@ class SideMenuRouter {
     static let viewControllerType = String(describing: SideMenuViewController.self)
     static let storyboardID = viewControllerType + "ID"
 
+    static let slideInPresentationWidthRatio: CGFloat = 5/6
+    static let slideInPresentationType = SideDrawerPresentationType.reveal
+    static let slideInPresentationDirection = SideDrawerPresentationDirection.left
+
     var slideInPresentationManager: SlideInPresentationManager?
 
     // MARK: instantiation of module
-    static func instantiateModule(with delegate: SideMenuModuleDelegate?) -> SideMenuViewController? {
+    static func instantiateModule(with delegate: SideMenuModuleDelegate?, percentInteractiveTransition: PercentInteractiveTransition?) -> SideMenuViewController? {
 
         guard (Bundle.main.path(forResource: storyboardName, ofType: "storyboardc") != nil) else {
             print("Could not find path for resource \(storyboardName).storyboard")
@@ -50,7 +54,10 @@ class SideMenuRouter {
             return nil
         }
 
-        let presentationManager = SlideInPresentationManager(widthRatio: 5/6, type: .reveal, direction: .left)
+        let presentationManager = SlideInPresentationManager(widthRatio: slideInPresentationWidthRatio,
+                                                             type: slideInPresentationType,
+                                                             direction: slideInPresentationDirection,
+                                                             interactiveTransition: percentInteractiveTransition)
 
         let router      = SideMenuRouter()
         router.slideInPresentationManager = presentationManager
@@ -70,8 +77,8 @@ class SideMenuRouter {
         return vc
     }
 
-    static func presentUserInterface(from parentViewController: UIViewController?, with delegate: SideMenuModuleDelegate?) {
-        guard let viewController = self.instantiateModule(with: delegate) else {return}
+    static func presentUserInterface(from parentViewController: UIViewController?, with delegate: SideMenuModuleDelegate?, percentInteractiveTransition: PercentInteractiveTransition?) {
+        guard let viewController = self.instantiateModule(with: delegate, percentInteractiveTransition: percentInteractiveTransition) else {return}
 
         parentViewController?.present(viewController, animated: true, completion: nil)
     }

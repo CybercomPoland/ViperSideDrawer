@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ViperSideDrawer
 
 class MainContainerDataManager {
     fileprivate (set) weak var dataManagerOutput: MainContainerDataManagerOutput?
@@ -28,6 +29,9 @@ class MainContainerRouter {
     static let storyboardName = "MainContainer"
     static let viewControllerType = String(describing: MainContainerViewController.self)
     static let storyboardID = viewControllerType + "ID"
+    
+    static let menuSwipeDirection = SideDrawerPresentationDirection.right
+    static let menuTransitionTreshold: CGFloat = 0.3
 
     // MARK: instantiation of module
     static func instantiateModule() -> UIViewController? {
@@ -46,11 +50,12 @@ class MainContainerRouter {
             print("ViewController with identifier \(storyboardID) in \(storyboardName).storyboard is not of type \(viewControllerType)")
             return nil
         }
+        let swipeInteractionController = SwipeInteractionController(swipeDirection: menuSwipeDirection, transitionThreshold: menuTransitionTreshold)
 
         let router      = MainContainerRouter()
         let dataManager = MainContainerDataManager()
         let interactor  = MainContainerInteractor(dataManager: dataManager)
-        let presenter   = MainContainerPresenter(interactor: interactor, router: router, view: vc)
+        let presenter   = MainContainerPresenter(interactor: interactor, router: router, view: vc, swipeInteractionController: swipeInteractionController)
 
         router.viewController = vc
         vc.viewOutput = presenter

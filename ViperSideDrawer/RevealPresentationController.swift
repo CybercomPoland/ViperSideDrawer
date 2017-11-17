@@ -10,16 +10,19 @@ import UIKit
 
 protocol RevealPresentationControllerDelegate: class {
     var widthRatio: CGFloat { get }
+    var swipePercentThreshold: CGFloat { get }
 }
 
 class RevealPresentationController: UIPresentationController {
 
     weak var presentationDelegate: RevealPresentationControllerDelegate?
 
-    private var direction: SideDrawerPresentationDirection
+    fileprivate var direction: SideDrawerPresentationDirection
+    fileprivate var percentInteractiveTransition: PercentInteractiveTransition?
 
-    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, direction: SideDrawerPresentationDirection) {
+    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, direction: SideDrawerPresentationDirection, percentInteractiveTransition: PercentInteractiveTransition?) {
         self.direction = direction
+        self.percentInteractiveTransition = percentInteractiveTransition
 
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
 
@@ -75,7 +78,7 @@ class RevealPresentationController: UIPresentationController {
         frame.size = size(forChildContentContainer: presentedViewController, withParentContainerSize: containerView!.bounds.size)
         switch direction {
         case .right:
-            frame.origin.x = containerView!.frame.width * (self.presentationDelegate?.widthRatio ?? 1.0)
+            frame.origin.x = containerView!.frame.width - (containerView!.frame.width * (self.presentationDelegate?.widthRatio ?? 1.0))
         default:
             break
         }
@@ -104,11 +107,23 @@ private extension RevealPresentationController {
         self.dimmingView.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
         self.dimmingView.alpha = 0.0
 
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:)))
-        self.dimmingView.addGestureRecognizer(recognizer)
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:)))
+        let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(recognizer:)))
+        self.dimmingView.addGestureRecognizer(tapRecognizer)
+        self.dimmingView.addGestureRecognizer(panRecognizer)
     }
 
     @objc dynamic func handleTap(recognizer: UITapGestureRecognizer) {
         presentingViewController.dismiss(animated: true)
+    }
+
+    @objc dynamic func handlePan(recognizer: UIPanGestureRecognizer) {
+        guard let viewBounds = presentedView?.bounds,
+            let percentThreshold = presentationDelegate?.swipePercentThreshold else { return }
+        let translation = recognizer.translation(in: self.dimmingView)
+        let progress = TransitionHelper.calculateProgress(translation, viewBounds: viewBounds, direction: direction)
+        TransitionHelper.translateGestureToInteractor(recognizer.state, progress: progress, percentThreshold: percentThreshold, percentInteractiveTransition: percentInteractiveTransition) {
+            presentingViewController.dismiss(animated: true)
+        }
     }
 }
