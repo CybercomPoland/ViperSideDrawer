@@ -30,6 +30,10 @@ class SideMenuRouter {
     static let viewControllerType = String(describing: SideMenuViewController.self)
     static let storyboardID = viewControllerType + "ID"
 
+    static let slideInPresentationWidthRatio: CGFloat = 5/6
+    static let slideInPresentationType = SideDrawerPresentationType.reveal
+    static let slideInPresentationDirection = SideDrawerPresentationDirection.left
+
     var slideInPresentationManager: SlideInPresentationManager?
 
     // MARK: instantiation of module
@@ -50,7 +54,10 @@ class SideMenuRouter {
             return nil
         }
 
-        let presentationManager = SlideInPresentationManager(widthRatio: 5/6, type: .reveal, direction: .left, interactiveTransition: percentInteractiveTransition)
+        let presentationManager = SlideInPresentationManager(widthRatio: slideInPresentationWidthRatio,
+                                                             type: slideInPresentationType,
+                                                             direction: slideInPresentationDirection,
+                                                             interactiveTransition: percentInteractiveTransition)
 
         let router      = SideMenuRouter()
         router.slideInPresentationManager = presentationManager

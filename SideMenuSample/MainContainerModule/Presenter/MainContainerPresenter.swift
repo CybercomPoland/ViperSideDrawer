@@ -15,12 +15,13 @@ class MainContainerPresenter {
     private (set) var router: MainContainerRouter
     private (set) var interactor: MainContainerInteractorInput
     private (set) weak var view: MainContainerViewController?
-    fileprivate let swipeInteractionController = SwipeInteractionController(swipeDirection: .right, transitionThreshold: 0.3)
+    fileprivate let swipeInteractionController: SwipeInteractionController
 
-    init(interactor: MainContainerInteractor, router: MainContainerRouter, view: MainContainerViewController) {
+    init(interactor: MainContainerInteractor, router: MainContainerRouter, view: MainContainerViewController, swipeInteractionController: SwipeInteractionController) {
         self.interactor = interactor
         self.router = router
         self.view = view
+        self.swipeInteractionController = swipeInteractionController
     }
 }
 
