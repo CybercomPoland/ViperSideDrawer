@@ -10,6 +10,6 @@ import UIKit
 
 extension SideMenuRouter: SideMenuRouterInterface {
     func dismissUserInterface() {
-        self.viewController?.dismiss(animated: true, completion: nil)
+        viewController?.dismiss(animated: true, completion: nil)
     }
 }

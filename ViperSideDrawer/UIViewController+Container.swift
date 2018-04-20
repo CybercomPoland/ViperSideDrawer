@@ -12,7 +12,7 @@ public extension UIViewController {
     func embed(childViewController childVC: UIViewController) {
 
         // Remove child VCs
-        for vc in self.childViewControllers {
+        for vc in childViewControllers {
             if vc != childVC {
                 vc.willMove(toParentViewController: nil)
                 vc.view.removeFromSuperview()
@@ -22,13 +22,13 @@ public extension UIViewController {
 
         addChildViewController(childVC)
 
-        childVC.view.frame = self.view.bounds
+        childVC.view.frame = view.bounds
         self.view.addSubview(childVC.view)
 
-        NSLayoutConstraint.activate([childVC.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-                                     childVC.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-                                     childVC.view.topAnchor.constraint(equalTo: self.view.topAnchor),
-                                     childVC.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)])
+        NSLayoutConstraint.activate([childVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                                     childVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                                     childVC.view.topAnchor.constraint(equalTo: view.topAnchor),
+                                     childVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)])
         childVC.didMove(toParentViewController: self)
     }
 }

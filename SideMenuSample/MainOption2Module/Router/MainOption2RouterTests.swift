@@ -59,7 +59,7 @@ class MainOption2RouterTests: XCTestCase {
     }
 
     func testViewInitialization() {
-        let viewController = MainOption2Router.instantiateModule()
+        let viewController = MainOption2Router.instantiateModule(withDelegate: self)
         XCTAssertNotNil(viewController, "Failed with not initialized MainOption2ViewController")
     }
     func testExample() {
@@ -73,5 +73,10 @@ class MainOption2RouterTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+}
 
+extension MainOption2RouterTests: MenuOptionDelegate {
+    func show(menuOptionView: UIViewController) {}
+
+    func didRequestToShowMenu() {}
 }

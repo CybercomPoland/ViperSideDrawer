@@ -6,7 +6,7 @@
 //  Copyright © 2017 Aleksander Maj. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public protocol MenuOptionDelegate: class {
     func show(menuOptionView: UIViewController)
@@ -14,7 +14,7 @@ public protocol MenuOptionDelegate: class {
 }
 
 public protocol MenuOptionInterface: class {
-    weak var menuOptionDelegate: MenuOptionDelegate? { get set }
+    var menuOptionDelegate: MenuOptionDelegate? { get set }
 }
 
 public protocol MenuOptionRouterInterface: class {

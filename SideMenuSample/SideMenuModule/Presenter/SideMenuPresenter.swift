@@ -34,8 +34,8 @@ extension SideMenuPresenter: SideMenuViewOutput {
     }
 
     func didTapButton(at index: UInt) {
-        self.delegate?.sideMenuDidSelectOption(at: index)
-        self.router.dismissUserInterface()
+        delegate?.sideMenuDidSelectOption(at: index)
+        router.dismissUserInterface()
     }
 }
 

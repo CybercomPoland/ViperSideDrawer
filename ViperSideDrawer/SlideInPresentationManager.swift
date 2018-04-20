@@ -52,12 +52,12 @@ extension SlideInPresentationManager: UIViewControllerTransitioningDelegate, Sli
     public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         switch type {
         case .slideIn:
-            let presentationController = SlideInPresentationController(presentedViewController: presented, presenting: presenting, direction: self.direction, percentInteractiveTransition: percentInteractiveTransition)
+            let presentationController = SlideInPresentationController(presentedViewController: presented, presenting: presenting, direction: direction, percentInteractiveTransition: percentInteractiveTransition)
             presentationController.presentationDelegate = self
             presentationControllerInput = presentationController
             return presentationController
         case .reveal:
-            let presentationController = RevealPresentationController(presentedViewController: presented, presenting: presenting, direction: self.direction, percentInteractiveTransition: percentInteractiveTransition)
+            let presentationController = RevealPresentationController(presentedViewController: presented, presenting: presenting, direction: direction, percentInteractiveTransition: percentInteractiveTransition)
             presentationController.presentationDelegate = self
             presentationControllerInput = presentationController
             return presentationController

@@ -60,7 +60,7 @@ class SideMenuRouterTests: XCTestCase {
     }
 
     func testViewInitialization() {
-        let viewController = SideMenuRouter.instantiateModule()
+        let viewController = SideMenuRouter.instantiateModule(with: nil, percentInteractiveTransition: nil)
         XCTAssertNotNil(viewController, "Failed with not initialized SideMenuViewController")
     }
     func testExample() {

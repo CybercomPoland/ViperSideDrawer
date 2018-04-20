@@ -32,7 +32,7 @@ class SlideInPresentationController: UIPresentationController {
     fileprivate var dimmingView: UIView!
 
     override func presentationTransitionWillBegin() {
-        self.containerView?.insertSubview(self.dimmingView, at: 0)
+        containerView?.insertSubview(dimmingView, at: 0)
 
         NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "V:|[dimmingView]|",
                                                                    options: [],
@@ -44,7 +44,7 @@ class SlideInPresentationController: UIPresentationController {
                                                                    views: ["dimmingView": dimmingView]))
 
         guard let coordinator = presentedViewController.transitionCoordinator else {
-            self.dimmingView.alpha = 1.0
+            dimmingView.alpha = 1.0
             return
         }
 
@@ -55,7 +55,7 @@ class SlideInPresentationController: UIPresentationController {
 
     override func dismissalTransitionWillBegin() {
         guard let coordinator = presentedViewController.transitionCoordinator else {
-            self.dimmingView.alpha = 0.0
+            dimmingView.alpha = 0.0
             return
         }
 
@@ -65,11 +65,11 @@ class SlideInPresentationController: UIPresentationController {
     }
 
     override func containerViewWillLayoutSubviews() {
-        self.presentedView?.frame = frameOfPresentedViewInContainerView
+        presentedView?.frame = frameOfPresentedViewInContainerView
     }
 
     override func size(forChildContentContainer container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
-        let size = CGSize(width: parentSize.width * (self.presentationDelegate?.widthRatio ?? 1.0), height: parentSize.height)
+        let size = CGSize(width: parentSize.width * (presentationDelegate?.widthRatio ?? 1.0), height: parentSize.height)
         return size
     }
 
@@ -78,7 +78,7 @@ class SlideInPresentationController: UIPresentationController {
         frame.size = size(forChildContentContainer: presentedViewController, withParentContainerSize: containerView!.bounds.size)
         switch direction {
         case .right:
-            frame.origin.x = containerView!.frame.width - (containerView!.frame.width * (self.presentationDelegate?.widthRatio ?? 1.0))
+            frame.origin.x = containerView!.frame.width - (containerView!.frame.width * (presentationDelegate?.widthRatio ?? 1.0))
         default:
             break
         }
@@ -102,15 +102,15 @@ extension SlideInPresentationController: SideDrawerPresentationControllerInput {
 // MARK: - Private
 private extension SlideInPresentationController {
     func setUpDimmingView() {
-        self.dimmingView = UIView()
-        self.dimmingView.translatesAutoresizingMaskIntoConstraints = false
-        self.dimmingView.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
-        self.dimmingView.alpha = 0.0
+        dimmingView = UIView()
+        dimmingView.translatesAutoresizingMaskIntoConstraints = false
+        dimmingView.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
+        dimmingView.alpha = 0.0
 
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:)))
         let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(recognizer:)))
-        self.dimmingView.addGestureRecognizer(tapRecognizer)
-        self.dimmingView.addGestureRecognizer(panRecognizer)
+        dimmingView.addGestureRecognizer(tapRecognizer)
+        dimmingView.addGestureRecognizer(panRecognizer)
     }
 
     @objc dynamic func handleTap(recognizer: UITapGestureRecognizer) {
@@ -120,7 +120,7 @@ private extension SlideInPresentationController {
     @objc dynamic func handlePan(recognizer: UIPanGestureRecognizer) {
         guard let viewBounds = presentedView?.bounds,
             let percentThreshold = presentationDelegate?.swipePercentThreshold else { return }
-        let translation = recognizer.translation(in: self.dimmingView)
+        let translation = recognizer.translation(in: dimmingView)
         let progress = TransitionHelper.calculateProgress(translation, viewBounds: viewBounds, direction: direction)
         TransitionHelper.translateGestureToInteractor(recognizer.state, progress: progress, percentThreshold: percentThreshold, percentInteractiveTransition: percentInteractiveTransition) {
             presentingViewController.dismiss(animated: true)

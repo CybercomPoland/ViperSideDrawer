@@ -12,7 +12,7 @@ import ViperSideDrawer
 extension MainOption2Router: MainOption2RouterInterface {
 
     static func embed(in containerModule: MenuOptionDelegate) {
-        guard let vc = self.instantiateModule(withDelegate: containerModule) else { return }
+        guard let vc = instantiateModule(withDelegate: containerModule) else { return }
         containerModule.show(menuOptionView: vc)
     }
 }

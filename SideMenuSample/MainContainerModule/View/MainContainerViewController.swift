@@ -20,11 +20,11 @@ class MainContainerViewController: UIViewController {
     // MARK: - Private
     func setUpNavigationBar() {
         let menuBarButton = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(menuButtonTapped))
-        self.navigationItem.leftBarButtonItem = menuBarButton
+        navigationItem.leftBarButtonItem = menuBarButton
     }
 
     @objc func menuButtonTapped() {
-        self.viewOutput?.menuButtonTapped()
+        viewOutput?.menuButtonTapped()
     }
 
     func setUpGestureRecognizers() {
@@ -34,7 +34,7 @@ class MainContainerViewController: UIViewController {
     }
 
     @objc func handleGesture(for gestureRecognizer: UIScreenEdgePanGestureRecognizer) {
-        self.viewOutput?.handleLeftScreenEdgePan(for: gestureRecognizer)
+        viewOutput?.handleLeftScreenEdgePan(for: gestureRecognizer)
     }
 }
 

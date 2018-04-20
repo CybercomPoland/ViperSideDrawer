@@ -30,7 +30,7 @@ extension MainOption2Presenter: MainOption2InteractorOutput {
 
 extension MainOption2Presenter: MainOption2ViewOutput {
     func menuButtonTapped() {
-        self.menuOptionDelegate?.didRequestToShowMenu()
+        menuOptionDelegate?.didRequestToShowMenu()
     }
 
     func viewDidLoad() {}

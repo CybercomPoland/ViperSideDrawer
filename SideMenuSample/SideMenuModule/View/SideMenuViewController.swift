@@ -17,11 +17,11 @@ class SideMenuViewController: UIViewController {
     }
 
     @IBAction func option1Tapped(_ sender: Any) {
-        self.viewOutput?.didTapButton(at: 0)
+        viewOutput?.didTapButton(at: 0)
     }
 
     @IBAction func option2Tapped(_ sender: Any) {
-        self.viewOutput?.didTapButton(at: 1)
+        viewOutput?.didTapButton(at: 1)
     }
 }
 

@@ -59,7 +59,7 @@ class MainOption1RouterTests: XCTestCase {
     }
 
     func testViewInitialization() {
-        let viewController = MainOption1Router.instantiateModule()
+        let viewController = MainOption1Router.instantiateModule(withDelegate: nil)
         XCTAssertNotNil(viewController, "Failed with not initialized MainOption1ViewController")
     }
     func testExample() {

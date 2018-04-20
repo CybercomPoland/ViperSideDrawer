@@ -78,7 +78,7 @@ class SideMenuRouter {
     }
 
     static func presentUserInterface(from parentViewController: UIViewController?, with delegate: SideMenuModuleDelegate?, percentInteractiveTransition: PercentInteractiveTransition?) {
-        guard let viewController = self.instantiateModule(with: delegate, percentInteractiveTransition: percentInteractiveTransition) else {return}
+        guard let viewController = instantiateModule(with: delegate, percentInteractiveTransition: percentInteractiveTransition) else {return}
 
         parentViewController?.present(viewController, animated: true, completion: nil)
     }

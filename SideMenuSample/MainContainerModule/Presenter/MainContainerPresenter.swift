@@ -32,18 +32,18 @@ extension MainContainerPresenter: MainContainerInteractorOutput {
 extension MainContainerPresenter: MainContainerViewOutput {
 
     func viewDidLoad() {
-        self.router.embedInitialModule(in: self)
+        router.embedInitialModule(in: self)
     }
 
     func handleLeftScreenEdgePan(for gestureRecognizer: UIScreenEdgePanGestureRecognizer) {
         guard let view = view?.view else { return }
         swipeInteractionController.handleScreenEdgePanGesture (gesture: gestureRecognizer, view: view) {
-            self.router.presentSideMenu(with: self, swipeInteractionController: swipeInteractionController)
+            router.presentSideMenu(with: self, swipeInteractionController: swipeInteractionController)
         }
     }
 
     func menuButtonTapped() {
-        self.router.presentSideMenu(with: self)
+        router.presentSideMenu(with: self)
     }
 }
 
@@ -53,9 +53,9 @@ extension MainContainerPresenter: SideMenuModuleDelegate {
 
         switch sideMenuOption {
         case .one:
-            self.router.embedModule1(in: self)
+            router.embedModule1(in: self)
         case .two:
-            self.router.embedModule2(in: self)
+            router.embedModule2(in: self)
         }
     }
 }
@@ -63,11 +63,11 @@ extension MainContainerPresenter: SideMenuModuleDelegate {
 extension MainContainerPresenter: MenuOptionDelegate {
 
     func didRequestToShowMenu() {
-        self.router.presentSideMenu(with: self)
+        router.presentSideMenu(with: self)
     }
 
     func show(menuOptionView: UIViewController) {
-        self.view?.embed(childViewController: menuOptionView)
+        view?.embed(childViewController: menuOptionView)
     }
 }
 
