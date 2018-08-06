@@ -7,16 +7,23 @@
 //
 
 import UIKit
+import ViperSideDrawer
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var sideAppViewController: SideAppViewController = { return SideAppViewController() }()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let mainVC = MainContainerRouter.instantiateModule()
-        window?.rootViewController = mainVC
+        guard let option1 = MainOption1Router.instantiateModule(withDelegate: nil) else { return true }
+        guard let sideVC = SideMenuRouter.instantiateModule(with: nil, percentInteractiveTransition: nil) else { return true }
+        
+        sideAppViewController.addChildViewController(option1)
+        sideAppViewController.addSideViewController(sideVC)
+        
+        window?.rootViewController = sideAppViewController
         window?.makeKeyAndVisible()
         return true
     }

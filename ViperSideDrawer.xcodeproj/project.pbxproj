@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38B2A3AD2111C86400C7E71A /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B2A3AC2111C86300C7E71A /* AppViewController.swift */; };
+		38B2A3B72111F0EF00C7E71A /* SideAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B2A3B62111F0EE00C7E71A /* SideAppViewController.swift */; };
 		40516C791F0F919000605CCF /* SideMenuDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40516C551F0F919000605CCF /* SideMenuDataManager.swift */; };
 		40516C7A1F0F919000605CCF /* SideMenuDataManagerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40516C561F0F919000605CCF /* SideMenuDataManagerProtocols.swift */; };
 		40516C7B1F0F919000605CCF /* SideMenuInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40516C581F0F919000605CCF /* SideMenuInteractor.swift */; };
@@ -84,13 +86,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		40516C511F0F912B00605CCF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 405260021F0E5B370053F5D9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4052600A1F0E5B370053F5D9;
-			remoteInfo = ViperSideDrawer;
-		};
 		405260161F0E5B370053F5D9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 405260021F0E5B370053F5D9 /* Project object */;
@@ -111,6 +106,8 @@
 		006134971FC1E6C4AA49CABA /* Pods-ViperSideDrawer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViperSideDrawer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ViperSideDrawer/Pods-ViperSideDrawer.debug.xcconfig"; sourceTree = "<group>"; };
 		266C45196870EEB38766BB15 /* Pods_SideMenuSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SideMenuSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		381E8D27C0717F205515CD1A /* Pods-ViperSideDrawerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViperSideDrawerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ViperSideDrawerTests/Pods-ViperSideDrawerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		38B2A3AC2111C86300C7E71A /* AppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
+		38B2A3B62111F0EE00C7E71A /* SideAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideAppViewController.swift; sourceTree = "<group>"; };
 		40516C551F0F919000605CCF /* SideMenuDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuDataManager.swift; sourceTree = "<group>"; };
 		40516C561F0F919000605CCF /* SideMenuDataManagerProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuDataManagerProtocols.swift; sourceTree = "<group>"; };
 		40516C581F0F919000605CCF /* SideMenuInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuInteractor.swift; sourceTree = "<group>"; };
@@ -526,6 +523,8 @@
 		40940C8D1F16633B007AE34F /* Container */ = {
 			isa = PBXGroup;
 			children = (
+				38B2A3AC2111C86300C7E71A /* AppViewController.swift */,
+				38B2A3B62111F0EE00C7E71A /* SideAppViewController.swift */,
 				40940C8E1F166371007AE34F /* UIViewController+Container.swift */,
 			);
 			name = Container;
@@ -667,7 +666,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				40516C521F0F912B00605CCF /* PBXTargetDependency */,
 			);
 			name = SideMenuSample;
 			productName = SideMenuSample;
@@ -874,11 +872,13 @@
 				40E7308A1F0E5CF5007F9786 /* SlideInPresentationAnimator.swift in Sources */,
 				40E7308B1F0E5CF5007F9786 /* RevealPresentationAnimator.swift in Sources */,
 				40F54CC51F1BAD1200E52F15 /* MenuOptionDelegate.swift in Sources */,
+				38B2A3AD2111C86400C7E71A /* AppViewController.swift in Sources */,
 				B9E162BF1F98D20C0032A54C /* TransitionHelper.swift in Sources */,
 				40E730881F0E5CF5007F9786 /* SlideInPresentationManager.swift in Sources */,
 				40940C8F1F166371007AE34F /* UIViewController+Container.swift in Sources */,
 				B90DBCC31FA0A1B300D96ADF /* SwipeInteractionController.swift in Sources */,
 				40E7308C1F0E5CF5007F9786 /* RevealPresentationController.swift in Sources */,
+				38B2A3B72111F0EF00C7E71A /* SideAppViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -958,11 +958,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		40516C521F0F912B00605CCF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4052600A1F0E5B370053F5D9 /* ViperSideDrawer */;
-			targetProxy = 40516C511F0F912B00605CCF /* PBXContainerItemProxy */;
-		};
 		405260171F0E5B370053F5D9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4052600A1F0E5B370053F5D9 /* ViperSideDrawer */;

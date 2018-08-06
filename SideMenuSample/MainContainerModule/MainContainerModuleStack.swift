@@ -30,7 +30,7 @@ class MainContainerRouter {
     static let viewControllerType = String(describing: MainContainerViewController.self)
     static let storyboardID = viewControllerType + "ID"
     
-    static let menuSwipeDirection = SideDrawerPresentationDirection.right
+    static let menuSwipeDirection: SideDrawerPresentationDirection = .right
     static let menuTransitionTreshold: CGFloat = 0.3
 
     // MARK: instantiation of module
