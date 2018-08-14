@@ -28,9 +28,6 @@ public class AppViewController: UIViewController {
     private var bottomConstraint: NSLayoutConstraint!
     private var topConstraint: NSLayoutConstraint!
     
-    private var topAnimation: UIViewPropertyAnimator?
-    private var bottomAnimation: UIViewPropertyAnimator?
-    
     private func updateView(withStatusBarHeight statusBarHeight: CGFloat) {
         
         if appView.frame.size == CGSize.zero && appView.frame.origin == CGPoint.zero {
@@ -45,21 +42,27 @@ public class AppViewController: UIViewController {
         }
         let height = view.frame.size.height - topDistance
         
-        topAnimation?.stopAnimation(true)
-        bottomAnimation?.stopAnimation(true)
+        UIView.animate(withDuration: 0.3,
+                       delay: 0,
+                       options: [.beginFromCurrentState, .curveLinear],
+                       animations: {
+                        self.topConstraint.constant = topDistance
+                        self.view.layoutIfNeeded()
+        },
+                       completion: {
+                        (completion) in
+        })
         
-        topAnimation = UIViewPropertyAnimator(duration: 0.3, curve: .linear, animations: {
-            [weak self] in
-            self?.topConstraint.constant = topDistance
-            self?.view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.3,
+                       delay: 0,
+                       options: [.beginFromCurrentState, .curveLinear],
+                       animations: {
+                        self.bottomConstraint.constant = height
+                        self.view.layoutIfNeeded()
+        },
+                       completion: {
+                        (completion) in
         })
-        bottomAnimation = UIViewPropertyAnimator(duration: 0.3, curve: self.isBehindStatusBar ? .easeOut : .easeIn, animations: {
-            [weak self] in
-            self?.bottomConstraint.constant = height
-            self?.view.layoutIfNeeded()
-        })
-        topAnimation?.startAnimation()
-        bottomAnimation?.startAnimation()
     }
     
     @objc func moveStuff() {
@@ -77,13 +80,13 @@ public class AppViewController: UIViewController {
 //        NotificationCenter.default.addObserver(self, selector: #selector(statusBarWillChange), name:.UIApplicationWillChangeStatusBarFrame, object: nil)
 //        NotificationCenter.default.addObserver(self, selector: #selector(statusBarDidChange), name:.UIApplicationDidChangeStatusBarFrame, object: nil)
         
+        appView.backgroundColor = UIColor.white
+        view.addSubview(appView)
+        
         bottomConstraint = NSLayoutConstraint(item: appView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: UIScreen.main.bounds.height - UIApplication.shared.statusBarFrame.height)
         topConstraint = NSLayoutConstraint(item: appView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: UIApplication.shared.statusBarFrame.height)
         appViewLeadingAnchor = appView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
         appViewTrailingAnchor = appView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        
-        appView.backgroundColor = UIColor.white
-        view.addSubview(appView)
 
         appView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([appViewLeadingAnchor,
@@ -121,6 +124,7 @@ public class AppViewController: UIViewController {
         
         appView.addSubview(childController.view)
         
+        childController.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([childController.view.leadingAnchor.constraint(equalTo: appView.leadingAnchor),
                                      childController.view.trailingAnchor.constraint(equalTo: appView.trailingAnchor),
                                      childController.view.topAnchor.constraint(equalTo: appView.topAnchor),
